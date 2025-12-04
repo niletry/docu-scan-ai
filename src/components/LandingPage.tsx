@@ -1,4 +1,5 @@
-import { ScanText, ArrowRight, Sparkles, Zap, Shield } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Sparkles, Zap, Shield } from 'lucide-react';
 
 interface LandingPageProps {
     onStart: () => void;
@@ -14,8 +15,15 @@ export default function LandingPage({ onStart }: LandingPageProps) {
             <div className="max-w-5xl mx-auto px-6 text-center relative z-10 py-20">
                 {/* Logo/Icon */}
                 <div className="mb-8 flex justify-center">
-                    <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-blue-500/20 rotate-3 hover:rotate-6 transition-transform duration-500 border border-white/10">
-                        <ScanText className="w-12 h-12 text-white" />
+                    <div className="relative w-32 h-32 rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/20 rotate-3 hover:rotate-6 transition-transform duration-500 border border-white/10 group">
+                        <Image
+                            src="/logo.png"
+                            alt="DocuScan AI Logo"
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                            priority
+                            sizes="128px"
+                        />
                     </div>
                 </div>
 

@@ -5,7 +5,8 @@ import ImageUploader from '@/components/ImageUploader';
 import DocumentList, { DocItem } from '@/components/DocumentList';
 import ImageEditor from '@/components/ImageEditor';
 import { useImageProcessor } from '@/hooks/useImageProcessor';
-import { ScanText, FileText, Download } from 'lucide-react';
+import Image from 'next/image';
+import { FileText, Download } from 'lucide-react';
 
 import LandingPage from '@/components/LandingPage';
 
@@ -88,7 +89,7 @@ export default function Home() {
         if (i > 0) pdf.addPage();
 
         // Load image
-        const img = new Image();
+        const img = new window.Image();
         img.src = docItem.currentUrl;
         await new Promise((resolve, reject) => {
           img.onload = resolve;
@@ -131,8 +132,14 @@ export default function Home() {
       <header className="border-b border-gray-800 bg-black/50 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
-              <ScanText className="w-5 h-5 text-white" />
+            <div className="relative w-10 h-10 rounded-lg overflow-hidden shadow-lg shadow-blue-500/20 border border-white/10">
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                fill
+                className="object-cover"
+                sizes="40px"
+              />
             </div>
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
               DocuScan AI
